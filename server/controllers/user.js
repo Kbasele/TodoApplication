@@ -3,11 +3,6 @@ const bcrypt = require('bcrypt')
 const salt = Number(process.env.SALT);
 const {createToken} = require('../utils/createToken')
 
-/* const createToken = (user) =>{
-    return jwt.sign({user:user }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '4h'})
-} */
-
-
 exports.createUser = async (req, res, next) =>{
 
     const {userName, password} = req.body
