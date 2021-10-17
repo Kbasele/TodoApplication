@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const TaskSchema = new Schema ({
     task:{
         type: String, 
-        require: true 
+        required: true 
     },
     description: {
         type: String, 
@@ -19,3 +19,5 @@ const TaskSchema = new Schema ({
         default: new Date()
     }
 }); 
+
+module.exports = mongoose.model('Task', TaskSchema);

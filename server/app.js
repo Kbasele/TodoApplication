@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 const http = require('http').Server(app);
 const userRoute = require('./routes/user')
+const taskRoute = require('./routes/task')
 require("dotenv").config();
 
 //DB Connection
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //Routes
 app.use("/user", userRoute)
+app.use("/task", taskRoute)
 
 
 mongoose.connect(CONNECTION_URI, {

@@ -11,15 +11,13 @@ exports.createUser = async (req, res, next) =>{
         
         if(!user){
             bcrypt.hash(password, salt, (err, hash)=>{
-                if(err) res.status(500); 
+                if(err) res.sendStatus(500); 
                 else{
                     const newUser = new UserModel({userName, password: hash})
 
                     newUser.save()
-                    .then(item => res.status(201).json(item))
-                    .catch((err)=>{
-                        res.status(400).json({ msg: err.message });
-                    });
+                    .then(item => res.sendStatus(201).json())
+                    .catch(err=>res.sendStatus(400).json());
                 }
             })
 
@@ -34,11 +32,11 @@ exports.getUser = async (req, res, next) =>{
     try{
         await UserModel.findById(userId)
         .then(user => {
-            res.status(200).json(user);
+            res.sendStatus(200).json(user);
         }); 
 
     } catch{
-        res.status(400).json("could not found user"); 
+        res.sendStatus(400).json("could not found user"); 
     }; 
 
 }; 
