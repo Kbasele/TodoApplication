@@ -28,16 +28,10 @@ exports.createUser = async (req, res, next) =>{
 
 exports.getUser = async (req, res, next) =>{
     const {userId} = req.body; 
-
-    try{
-        await UserModel.findById(userId)
-        .then(user => {
-            res.sendStatus(200).json(user);
-        }); 
-
-    } catch{
-        res.sendStatus(400).json("could not found user"); 
-    }; 
+    
+    await UserModel.findById(userId)
+    .then(() => res.sendStatus(200).json())
+    .catch(()=>res.status(400).json("could not found user")); 
 
 }; 
 
