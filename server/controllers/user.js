@@ -17,7 +17,7 @@ exports.createUser = async (req, res, next) =>{
                     const newUser = new UserModel({userName, password: hash})
 
                     newUser.save()
-                    .then(item => res.status(200).json(item))
+                    .then(item => res.status(201).json(item))
                     .catch((err)=>{
                         res.status(400).json({ msg: err.message });
                     });
@@ -27,4 +27,19 @@ exports.createUser = async (req, res, next) =>{
         }
         else {res.status(400).json("USER ALREADY EXISTS")}
         
+}
+
+exports.getUser = async (req, res, next) =>{
+    const {userId} = req.body; 
+
+    try{
+        await UserModel.findById(userId)
+        .then(user => {
+            res.status(200).json(user);
+        })
+
+    } catch{
+        res.status(400).json("could not found user")
+    }
+
 }
