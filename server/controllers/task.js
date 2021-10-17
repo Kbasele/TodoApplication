@@ -35,6 +35,25 @@ exports.deleteTask = async (req, res, next) =>{
     }) 
 
 }
+exports.editTask = async (req, res, next) =>{
+    const taskId = req.params.id; 
+    const author = req.user; 
+    const {task, description} = req.body; 
+
+    await taskModel.findById(taskId)
+    .then(item =>{
+        //checks for right author
+        if(item.author.toString() === author){
+            item.updateOne(({task, description}), {new: true})
+            .then(()=>res.sendStatus(200).json())
+            .catch(()=>res.sendStatus(400).json()); 
+        }
+        else {
+            res.sendStatus(403).json(); 
+        }
+    }) 
+
+}
 
 exports.getTasks = async(req, res, next) =>{
     const userId = req.user; 
