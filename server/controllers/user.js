@@ -1,7 +1,11 @@
 const UserModel = require("../models/UserModel")
 const bcrypt = require('bcrypt')
 const salt = Number(process.env.SALT);
+const {createToken} = require('../utils/createToken')
 
+/* const createToken = (user) =>{
+    return jwt.sign({user:user }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '4h'})
+} */
 
 
 exports.createUser = async (req, res, next) =>{
@@ -36,10 +40,26 @@ exports.getUser = async (req, res, next) =>{
         await UserModel.findById(userId)
         .then(user => {
             res.status(200).json(user);
-        })
+        }); 
 
     } catch{
-        res.status(400).json("could not found user")
-    }
+        res.status(400).json("could not found user"); 
+    }; 
 
+}; 
+
+exports.loginUser = async (req, res, next) =>{
+    const {userName, password} = req.body; 
+
+    const user = await UserModel.findOne({userName})
+
+    if(user){
+        bcrypt.compare(password, user.password, (err, match) => {
+            if(err) res.status(403).json("WRONG EMAIL OR PASSWORD")
+            if(match) res.status(200).json(createToken(user.id))
+            else res.status(403).json("WRONG EMAIL OR PASSWORD")
+          });
+    } else{
+        res.status(403).json("WRONG EMAIL OR PASSWORD")
+    }
 }
