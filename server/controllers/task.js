@@ -57,7 +57,8 @@ exports.editTask = async (req, res, next) =>{
 
 exports.getTasks = async(req, res, next) =>{
     const userId = req.user; 
-    const tasks = await taskModel.find({author: userId})
+    
+    await taskModel.find({author: userId})
     .then((item) => res.status(200).json(item))
     .catch(()=>res.SendStatus(400).json()); 
 }
