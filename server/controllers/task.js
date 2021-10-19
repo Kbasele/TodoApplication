@@ -11,7 +11,10 @@ exports.createTask = async (req, res, next)  =>{
     })
     
     newTask.save()  
-    .then(() => res.sendStatus(201).json())
+    .then(item => {
+        userModel.findByIdAndUpdate(userId,{$push: {"tasks": item}})
+        .then(()=>res.sendStatus(201).json())
+    })
     .catch(() => res.status(400).json("Missing values"));
     
 
