@@ -74,10 +74,12 @@ export default function Form({fetch, task, setEdit, edit}) {
     
     if(fetch === "edit"){
         return (
-            <form onSubmit={editOnSubmit}>
-                <Input formData={formData} setFormData={setFormData} name="task" defVal={task.task}/>
-                <Input formData={formData} setFormData={setFormData} name="description"  defVal={task.description}/>
-                <Button text={"edit"}/>
+            <form className={"editform"}onSubmit={editOnSubmit}>
+                <div className={"inputfield"}>
+                    <Input formData={formData} setFormData={setFormData} name="task" defVal={task.task}/>
+                    <Input formData={formData} setFormData={setFormData} name="description"  defVal={task.description}/>
+                </div>
+                <Button text={"save changes"}/>
             </form>
 
         )

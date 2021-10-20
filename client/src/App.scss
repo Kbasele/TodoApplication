@@ -118,6 +118,10 @@ body{
   background: #f3f8f6; 
   box-shadow: .25rem .25rem .5rem #888888;
 
+  h1{
+    cursor: pointer;
+  }
+
   overflow-wrap: break-word; 
   &:hover{
     background: #dde6e2; 
@@ -159,6 +163,66 @@ body{
         cursor: pointer;
       }
       
+    }
+  }
+
+}
+
+.editform{
+  height: 166px;
+  padding: 15px;
+  margin: 15px; 
+  width: 700px;
+  border: 3px solid rgba(107, 14, 14, 0.055); 
+  background: #f3f4f8; 
+  box-shadow: .25rem .25rem .5rem #888888;
+
+  .inputfield{
+    display: flex;
+    flex-direction: column;
+    :nth-child(1){
+      font-size: 30px;
+      font-weight: 700;
+    }
+    :nth-child(2){
+      font-size: 16px;
+    }
+
+    input{
+      
+      margin: 20px 0px; 
+      width: 250px ;
+      border: none; 
+      outline: none;
+      background: none; 
+      border-bottom: 1px solid black; 
+      margin: 10px 0; 
+    
+      p{
+        margin: 10px 0px; 
+        
+      }
+      
+    }
+
+  }
+  button{
+    margin: 10px 0;
+    border: none; 
+    display: flex;
+    width: fit-content;
+    position: relative;
+    left: 535px;
+    background: none; 
+    cursor: pointer; 
+    padding: 6px 20px; 
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.1s;
+    cursor: pointer;
+
+    &:hover{
+      color: rgba(0, 0, 0, 0.507);
     }
   }
 

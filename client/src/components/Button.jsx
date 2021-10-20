@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 import { UserContext } from '../contexts/userContext'
 
 
-export default function Button({text, click, setEdit, edit}) {
+export default function Button({text, click, setEdit, edit,val}) {
 
     const {setUser} = useContext(UserContext)
     const history = useHistory()
@@ -30,6 +30,14 @@ export default function Button({text, click, setEdit, edit}) {
 
     }
     if(text==="edit"){
+        return (
+            <button  className="logout"onClick={setEdit}>
+                {text}
+            </button>
+        )
+
+    }
+    if(text==="save changes"){
         return (
             <button  className="logout"onClick={setEdit}>
                 {text}
