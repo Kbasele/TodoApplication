@@ -1,14 +1,11 @@
 import React, {useEffect, useContext} from 'react'
 import { UserContext } from '../contexts/userContext'
-import {useHistory} from 'react-router-dom'
 import Button from './Button'
 
 
 export default function Header() {
 
-    const history = useHistory()
-
-    const {user, getUserData, setUser} = useContext(UserContext)
+    const {user, getUserData} = useContext(UserContext)
 
     useEffect(()=>{
         getUserData()
@@ -18,14 +15,14 @@ export default function Header() {
 
 
     return (
-        <div>
+        <div className={"header"}>
             {user&&
-                <div>
                     <h1>TODOODODO</h1>
-                    <p>Welcome {user.user}</p>
-                </div>
             }
-            <Button type="logout" text={"logout"}/>
+            <div className={"user"}>
+                <p>Welcome {user.user}</p>
+                <Button type="logout" text={"logout"}/>   
+            </div>
         </div>
     )
 }

@@ -12,5 +12,9 @@ export default function LoginPage() {
         //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    return <Form fetch="login"/>
+    return (
+        <div className="login-page">
+            <Form fetch="login"/>
+        </div>
+    )
 }

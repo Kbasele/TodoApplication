@@ -17,16 +17,19 @@ export default function HomePage() {
     }, [])
 
     return (
-        <div>
+        <>
             <Header/>
             {!user ? <p>LOADING</p>: 
             (<>
                 <Form fetch="create"/>
-                {user.tasks.map((task, key) =>{
-                    return <TaskCard  task={task} key={key}/>
-                        })}
+                <div className="hompage-content">
+                    {user.tasks.map((task, key) =>{
+                        return <TaskCard  task={task} key={key}/>
+                            })}
+                    
+                </div>
             </>)
             }
-        </div>
+        </>
     )
 }

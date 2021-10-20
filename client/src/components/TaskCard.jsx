@@ -1,17 +1,14 @@
-import React, {useState,useContext} from 'react'
+import React, {useState} from 'react'
 import Button from './Button'
-import FetchKit from '../utils/fetchKit'
-import { UserContext } from '../contexts/userContext'
 import Form from './Form'
 
 
 export default function TaskCard({task}, {key}) {
-    const { getUserData} = useContext(UserContext)
-
     const [visible, setVisible] = useState(false)
     const [edit, setEdit] = useState(false)
     const handleOnClick = () =>{
         setVisible(!visible)
+        
     }  
 
     const showEdit = () =>{
@@ -21,15 +18,18 @@ export default function TaskCard({task}, {key}) {
     return (
         <>
             {!edit?
-                <div>
+                <div className="task-card" >
                     <h1 onClick={handleOnClick}>{task.task}</h1>
                     {visible && 
-                    <div>
+                    <div className={"task-card-content"}>
                         <p>{task.description}</p>
                         <p>{task.date}</p>
-                        <div onClick={showEdit}><Button text={"edit"}/>
+                        <div onClick={showEdit}>
                     </div>
-                    <Form fetch={"delete"} task={task}/>
+                    <div className="taskCard-bottom">
+                        <Button text={"edit"} onClick={showEdit} setEdit={setEdit} edit={edit}/>
+                        <Form fetch={"delete"} task={task}/>
+                    </div>
                 </div>
             }
                 </div>

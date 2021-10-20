@@ -62,7 +62,7 @@ export default function Form({fetch, task, setEdit, edit}) {
     if(fetch === "login"){
         return (
             <>
-                <form onSubmit={loginOnSubmit}>
+                <form className="inputForm" onSubmit={loginOnSubmit}>
                     <Input formData={formData} setFormData={setFormData} name="userName" placeHolder={"username"}/>
                     <Input formData={formData} setFormData={setFormData} name="password" placeHolder={"password"}/>
                     <Button text={"login"}/>
@@ -85,7 +85,7 @@ export default function Form({fetch, task, setEdit, edit}) {
 
     if(fetch === "create"){
         return (
-            <form onSubmit={createOnSubmit}>
+            <form className="inputForm" onSubmit={createOnSubmit}>
                 <Input formData={formData} setFormData={setFormData} name="task" placeHolder={"start typing..."}/>
                 <Input formData={formData} setFormData={setFormData} name="description" placeHolder={"description"}/>
                 <Button text={"add"}/>

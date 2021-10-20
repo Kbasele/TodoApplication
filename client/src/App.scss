@@ -2,4 +2,164 @@
   padding: 0; 
   margin: 0; 
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body{
+  background: #EAF2EF;
+  height: 100vh; 
+}
+
+.login-page{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%; 
+  left: 50%; 
+
+}
+
+.hompage-content{
+  display: flex;
+  align-items: center;
+  margin: auto auto;
+  max-width: 980px;
+  flex-wrap: wrap;
+  flex-flow: column;
+}
+
+.inputForm{
+  width: 350px;
+    display: flex; 
+    flex-direction: column;
+    padding: 10px; 
+    height: 105px;
+    margin: 50px auto; 
+
+    input{
+      width: 250px ;
+      border: none; 
+      outline: none;
+      background: none; 
+      border-bottom: 1px solid black; 
+      margin: 10px 0; 
+    }
+    
+    button{
+      margin-top: 10px;
+      border: none; 
+      display: flex;
+      width: fit-content;
+      position: relative;
+      left: 170px;
+      background: none; 
+      cursor: pointer; 
+      padding: 6px 20px; 
+      font-size: 15px;
+      font-weight: 600;
+      transition: 0.1s;
+
+      &:hover{
+        background: rgb(248, 248, 248)
+      }
+    }
+
+  
+}
+
+.header{
+  background: #EAF2EF;
+  margin: auto; 
+  max-width:1080px;
+  padding: 40px 0; 
+  display: flex;
+  justify-content: space-between;
+
+  .user{
+    display: flex;
+    align-items: center;
+    
+    p{
+      margin: 0 40px; 
+    }
+  }
+
+  .logout{
+    
+    border: none; 
+    display: flex;
+    width: fit-content;
+    position: relative;
+    background: none; 
+    cursor: pointer; 
+    padding: 6px 6px; 
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.1s;
+  
+    &:hover{
+      background: rgb(248, 248, 248)
+    }
+    
+  }
+  
+}
+
+.task-card{
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 15px; 
+  padding: 15px; 
+  width: 700px;
+  border-radius: 1px;
+  transition: 0.2s;
+  border: 3px solid rgba(107, 14, 14, 0.055); 
+  background: #f3f8f6; 
+  box-shadow: .25rem .25rem .5rem #888888;
+
+  overflow-wrap: break-word; 
+  &:hover{
+    background: #dde6e2; 
+    
+  }
+
+  .task-card-content{
+    margin: 20px 0px; 
+
+    p{
+      margin: 10px 0px; 
+      
+    }
+  }
+
+  
+
+  .taskCard-bottom{
+    display: flex;
+    float: right;
+    justify-content: space-between;
+
+    p{
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    button{
+      background: none; 
+      border: none; 
+      margin: 0 5px;
+      z-index: 10000;
+      font-size: 15px;
+      font-weight: 600;
+
+      &:hover{
+        color: rgba(0, 0, 0, 0.507);
+        cursor: pointer;
+      }
+      
+    }
+  }
+
 }
