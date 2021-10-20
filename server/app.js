@@ -7,6 +7,7 @@ const userRoute = require('./routes/user')
 const taskRoute = require('./routes/task')
 const cors = require('cors')
 require("dotenv").config();
+app.use(cors())
 
 //DB Connection
 const PORT = process.env.PORT || 3000; 
@@ -18,7 +19,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //Routes
-app.use(cors())
 app.use("/user", userRoute)
 app.use("/task", taskRoute)
 

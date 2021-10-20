@@ -1,15 +1,16 @@
-import React, {useState} from 'react'
+import React, {useEffect} from 'react'
 import Form from '../components/Form'
+import {useHistory} from 'react-router-dom'
 
 export default function LoginPage() {
+    const token = localStorage.getItem("token")
+    const history = useHistory()
 
-    return (
-        <div>
-            <Form 
-                firstInput={"userName"}
-                secondInput={"password"}
-                buttonText={"login"}
-            />
-        </div>
-    )
+    useEffect(()=>{
+        if(token) history.push("/home")
+        
+        //eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    return <Form fetch="login"/>
 }

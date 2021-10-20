@@ -1,19 +1,23 @@
-import react, {useState, useContext} from 'react'
+import React, {useState, useContext} from 'react'
 import FetchKit from '../utils/fetchKit'
-import { UserContext } from '../contexts/userContext';
 import {useHistory} from 'react-router-dom'
+import { UserContext } from '../contexts/userContext'
 
-export default function Form({firstInput, secondInput, buttonText, onSubmit}) {
+import Input from './Input'
+import Button from './Button'
+
+export default function Form({fetch, task, setEdit, edit}) {
     const [wrongCred, setWrongCred] = useState(false)
+    const {getUserData} = useContext(UserContext)
 
     const history = useHistory()
 
     const [formData, setFormData] = useState({
-        username: "", 
+        userName: "", 
         password: ""
     })
 
-    const handleOnSubmit = async (e) =>{
+    const loginOnSubmit = async (e) =>{
         e.preventDefault() 
 
         const data = await FetchKit.loginFetch(formData)
@@ -21,28 +25,81 @@ export default function Form({firstInput, secondInput, buttonText, onSubmit}) {
 
         if(data.ok){
             localStorage.setItem("token", token)
-            history.push("/homepage")
+            history.push("/home")
         }
         else{
             setWrongCred(true)
         }
     }
 
-    const handleOnChange = (e)=>{
-        const inputName = e.target.name; 
-        const inputValue = e.target.value; 
-        setFormData({...formData, [inputName]:inputValue})
+    const editOnSubmit = async (e) =>{
+        e.preventDefault()
+        const editTask = await FetchKit.editTasksFetch(formData, task._id)
+        if(editTask.ok){
+            setEdit(!edit)
+            getUserData()
+        }
+        console.log(editTask)
+    }
+
+    const createOnSubmit = async (e) =>{
+        e.preventDefault()
+        console.log(formData)
+        const newTask =await FetchKit.createTasksFetch(formData)
+        if(newTask.ok)  getUserData()
+    }
+
+    const deleteOnSubmit = async (e) =>{
+        e.preventDefault()
+        const deletTask = await FetchKit.deleteTaskFetch(task._id)
+        if(deletTask.ok){
+            getUserData()
+        }
     }
 
 
-    return (
-        <>
-            <form onSubmit={handleOnSubmit}>
-                <input onChange={handleOnChange} placeholder={firstInput} name={firstInput}/>
-                <input onChange={handleOnChange} placeholder={secondInput} name={secondInput}/>
-                <button>{buttonText}</button>
+
+    if(fetch === "login"){
+        return (
+            <>
+                <form onSubmit={loginOnSubmit}>
+                    <Input formData={formData} setFormData={setFormData} name="userName" placeHolder={"username"}/>
+                    <Input formData={formData} setFormData={setFormData} name="password" placeHolder={"password"}/>
+                    <Button text={"login"}/>
+                </form>
+                {wrongCred && <p>WRONG PASSWORD OR EMAIL</p>}
+            </>
+        )
+    }
+    
+    if(fetch === "edit"){
+        return (
+            <form onSubmit={editOnSubmit}>
+                <Input formData={formData} setFormData={setFormData} name="task" defVal={task.task}/>
+                <Input formData={formData} setFormData={setFormData} name="description"  defVal={task.description}/>
+                <Button text={"edit"}/>
             </form>
-            {wrongCred && <p>WRONG PASSWORD OR EMAIL</p>}
-        </>
-    )
+
+        )
+    }
+
+    if(fetch === "create"){
+        return (
+            <form onSubmit={createOnSubmit}>
+                <Input formData={formData} setFormData={setFormData} name="task" placeHolder={"start typing..."}/>
+                <Input formData={formData} setFormData={setFormData} name="description" placeHolder={"description"}/>
+                <Button text={"add"}/>
+            </form>
+
+        )
+    }
+
+    if(fetch === "delete"){
+        return(
+        <form onSubmit={deleteOnSubmit}>
+            <Button text={"delete"}/>
+        </form>
+
+        )
+    }
 }
