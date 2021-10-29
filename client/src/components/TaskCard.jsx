@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Button from './Button'
-import Form from './Form'
+import DeleteForm from './forms/DeleteForm'
+import EditForm from './forms/EditForm'
 
 
 export default function TaskCard({task}, {key}) {
@@ -28,13 +29,13 @@ export default function TaskCard({task}, {key}) {
                     </div>
                     <div className="taskCard-bottom">
                         <Button text={"edit"} onClick={showEdit} setEdit={setEdit} edit={edit}/>
-                        <Form fetch={"delete"} task={task}/>
+                        <DeleteForm task={task}/>
                     </div>
                 </div>
             }
                 </div>
                 
-                : <Form fetch="edit" edit={edit} task={task} setEdit={setEdit}/>
+                : <EditForm fetch="edit" edit={edit} task={task} setEdit={setEdit}/>
             }
             
         </>

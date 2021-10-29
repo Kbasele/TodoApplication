@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
-import Form from '../components/Form'
 import {useHistory} from 'react-router-dom'
+import LoginForm from '../components/forms/LoginForm'
 
 export default function LoginPage() {
     const token = localStorage.getItem("token")
@@ -9,12 +9,11 @@ export default function LoginPage() {
     useEffect(()=>{
         if(token) history.push("/home")
         
-        //eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [token])
 
     return (
         <div className="login-page">
-            <Form fetch="login"/>
+            <LoginForm/>
         </div>
     )
 }

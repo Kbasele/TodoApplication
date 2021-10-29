@@ -10,17 +10,15 @@ import FetchKit from './utils/fetchKit'
 function App() {
 
   const [user, setUser] = useState({
-    
       userName:"", 
       tasks:[]
-
   })
 
 
   const getUserData = async () =>{
-    const data = await FetchKit.getUserFetch()
-    await data.json()
-    .then(item => setUser(item))    
+    const res = await FetchKit.getUserFetch()
+    const data = await res.json()
+    setUser(data) 
   }
 
   return (

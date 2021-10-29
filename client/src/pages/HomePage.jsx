@@ -3,7 +3,7 @@ import { UserContext } from '../contexts/userContext'
 import {useHistory} from 'react-router-dom'
 import Header from '../components/Header'
 import TaskCard from '../components/TaskCard'
-import Form from '../components/Form'
+import CreateForm from '../components/forms/CreateForm'
 
 export default function HomePage() {
     const history = useHistory()
@@ -21,7 +21,7 @@ export default function HomePage() {
             <Header/>
             {!user ? <p>LOADING</p>: 
             (<>
-                <Form fetch="create"/>
+                <CreateForm fetch="create"/>
                 <div className="hompage-content">
                     {user.tasks.map((task, key) =>{
                         return <TaskCard  task={task} key={key}/>
