@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function Input({formData, setFormData, name, defVal, placeHolder}) {
     
-
     const handleOnChange = (e)=>{
         const inputName = e.target.name; 
         const inputValue = e.target.value; 

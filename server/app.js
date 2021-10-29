@@ -5,6 +5,7 @@ const app = express();
 const http = require('http').Server(app);
 const userRoute = require('./routes/user')
 const taskRoute = require('./routes/task')
+const authRoute = require('./routes/auth')
 const cors = require('cors')
 require("dotenv").config();
 app.use(cors())
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 //Routes
 app.use("/user", userRoute)
 app.use("/task", taskRoute)
+app.use("/auth", authRoute)
 
 
 

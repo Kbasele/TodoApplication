@@ -11,7 +11,7 @@ export default class FetchKit{
               "Content-Type": "application/json",
             }, 
             body: JSON.stringify(formData)
-          })
+      })
 
     static getUserFetch = () => 
       fetch(`${baseUrl}/user`, {
@@ -20,6 +20,15 @@ export default class FetchKit{
           "Content-Type": "application/json",
           Authorization: `${getToken()}`,
       }
+    })
+
+    static verifyTokenAuth = (token) =>
+      fetch(`${baseUrl}/auth`, {
+        method: "GET", 
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${token}`
+        },
     })
 
     static getTasksFetch = () => 
