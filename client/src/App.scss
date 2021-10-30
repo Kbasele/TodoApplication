@@ -10,6 +10,14 @@ body{
   height: 100vh; 
 }
 
+.loading{
+  position: absolute; 
+  top: 50%; 
+  right: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
 .login-page{
   position: absolute;
   transform: translate(-50%, -50%);
@@ -116,7 +124,7 @@ body{
   transition: 0.2s;
   border: 3px solid rgba(107, 14, 14, 0.055); 
   background: #f3f8f6; 
-  box-shadow: .25rem .25rem .5rem #888888;
+  box-shadow: .25rem .25rem .5rem #000000;
 
   h1{
     cursor: pointer;

@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage'
 import { UserContext } from './contexts/userContext';
 import HomePage from './pages/HomePage';
 import FetchKit from './utils/fetchKit'
+import ProtectedRoute from './pages/ProtectedRoute'
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
       }
     }>
       <Switch>
-        <Route path="/home" component={HomePage}/>
+        <ProtectedRoute path="/home" component={HomePage}/>
         <Route exact path="/" component={LoginPage}/>
       </Switch>
     </UserContext.Provider>

@@ -11,7 +11,7 @@ export default function LoginForm() {
 
 
     useEffect(()=>{
-        if(token) verifyToken(token)
+        if(token.length > 0) verifyToken(token) 
     }, [token])
 
     const [formData, setFormData] = useState({
@@ -32,9 +32,15 @@ export default function LoginForm() {
 
     const verifyToken = async (token) => {
         const data = await FetchKit.verifyTokenAuth(token)
-        if(data.ok)
-        localStorage.setItem("token", token)
-        history.push("/home")
+        if(data.ok){
+            console.log("DEN ÄR OK")
+            localStorage.setItem("token", token)
+            history.push("/home")
+        } else{
+            console.log("NÄ")
+            history.push("/error")
+        }
+        
     }
     
     return (

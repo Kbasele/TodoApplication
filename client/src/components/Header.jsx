@@ -1,24 +1,12 @@
-import React, {useEffect, useContext} from 'react'
-import { UserContext } from '../contexts/userContext'
+import React from 'react'
 import Button from './Button'
 
 
-export default function Header() {
-
-    const {user, getUserData} = useContext(UserContext)
-
-    useEffect(()=>{
-        getUserData()
-
-        //eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
+export default function Header({user}) {
 
     return (
         <div className={"header"}>
-            {user&&
-                    <h1>TODOODODO</h1>
-            }
+            <h1>TODOODODO</h1> 
             <div className={"user"}>
                 <p>Welcome {user.user}</p>
                 <Button type="logout" text={"logout"}/>   
