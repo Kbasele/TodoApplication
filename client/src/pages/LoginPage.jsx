@@ -22,12 +22,17 @@ export default function LoginPage() {
         <div className="login-page">
             {newUser&& "Ny användare registrerad!"}
             {!createUser? 
-            <>
-            <LoginForm setNewUser={setNewUser} setCreateUser={setCreateUser}/>
-            </>
-            :<CreateUserForm setNewUser={setNewUser} setCreateUser={setCreateUser}/>
+                <LoginForm 
+                    setNewUser={setNewUser} 
+                    setCreateUser={setCreateUser}
+                />
+                :<CreateUserForm 
+                    setNewUser={setNewUser}
+                    setCreateUser={setCreateUser}
+                />
             } 
-            <p className="create-text" onClick={handleOnClick}>{!createUser?"create user":"back to login"}</p>
+            <p className="create-text" onClick={handleOnClick}>
+            {!createUser?"create user":"back to login"}</p>
         </div>
     )
 }

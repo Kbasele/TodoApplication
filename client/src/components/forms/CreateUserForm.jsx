@@ -25,8 +25,19 @@ export default function CreateUserForm({setNewUser, setCreateUser}) {
     return (
         <>
             <form className="inputForm" onSubmit={handleOnSubmit}>
-                <Input formData={formData} setFormData={setFormData} name="userName" placeHolder={"username"}/>
-                <Input formData={formData} setFormData={setFormData} name="password" placeHolder={"password"}/>
+                <Input 
+                    formData={formData} 
+                    setFormData={setFormData} 
+                    name="userName" 
+                    placeHolder={"new username"}
+                />
+                <Input 
+                    formData={formData} 
+                    setFormData={setFormData} 
+                    name="password" 
+                    placeHolder={"new password"} 
+                    type={"password"}
+                />
                 <Button text={"signup"}/>
             </form>
             {exists && <p>Username is taken</p>}

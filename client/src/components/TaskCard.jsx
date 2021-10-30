@@ -29,20 +29,22 @@ export default function TaskCard({task, setCloseAll,closeAll }) {
                 <div className="task-card" >
                     <h1 onClick={handleOnClick}>{task.task}</h1>
                     {visible && 
-                    <div className={"task-card-content"}>
-                        <p>{task.description}</p>
-                        <p>{task.date}</p>
-                        <div onClick={showEdit}>
+                        <div className={"task-card-content"}>
+                            <p>{task.description}</p>
+                            <p>{task.date}</p>
+                            <div onClick={showEdit}>
+                        </div>
+                        <div className="taskCard-bottom">
+                            <EditButton onClick={showEdit} setEdit={setEdit}/>
+                            <DeleteForm task={task} setCloseAll={setCloseAll}/>
+                        </div>
                     </div>
-                    <div className="taskCard-bottom">
-                        <EditButton onClick={showEdit} setEdit={setEdit}/>
-                        <DeleteForm task={task} setCloseAll={setCloseAll}/>
-                    </div>
+                    }
                 </div>
-            }
-                </div>
-                
-                : <EditForm fetch="edit" edit={edit} task={task} setEdit={setEdit}/>
+                :<EditForm 
+                    fetch="edit" 
+                    edit={edit} task={task} setEdit={setEdit}
+                    />
             }
             
         </>

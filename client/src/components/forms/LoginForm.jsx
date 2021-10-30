@@ -32,8 +32,18 @@ export default function LoginForm({setNewUser, setCreateUser}) {
         <>
             {wrongCred && <p>WRONG PASSWORD OR EMAIL</p>}
             <form className="inputForm" onSubmit={checkCredentials}>
-                <Input formData={formData} setFormData={setFormData} name="userName" placeHolder={"username"}/>
-                <Input formData={formData} setFormData={setFormData} name="password" placeHolder={"password"}/>
+                <Input formData={formData} 
+                    setFormData={setFormData} 
+                    name="userName" 
+                    placeHolder={"username"}
+                />
+                <Input 
+                    formData={formData} 
+                    setFormData={setFormData} 
+                    name="password" 
+                    placeHolder={"password"}
+                    type={"password"}
+                />
                 <Button text={"login"}/>
             </form>
         </>

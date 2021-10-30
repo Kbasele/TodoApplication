@@ -26,8 +26,16 @@ export default function EditForm({task, setEdit, edit}) {
     return (
         <form className={"editform"}onSubmit={editOnSubmit}>
             <div className={"inputfield"}>
-                <Input formData={formData} setFormData={setFormData} name="task" defVal={task.task}/>
-                <Input formData={formData} setFormData={setFormData} name="description"  defVal={task.description}/>
+                <Input formData={formData} 
+                    setFormData={setFormData} 
+                    name="task" 
+                    defVal={task.task}
+                />
+                <Input formData={formData}
+                    setFormData={setFormData} 
+                    name="description"  
+                    defVal={task.description}
+                />
             </div>
             <SaveButton/>
         </form>

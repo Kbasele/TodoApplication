@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Input({formData, setFormData, name, defVal, placeHolder}) {
+export default function Input({formData, setFormData, name, defVal, placeHolder, type}) {
     
     const handleOnChange = (e)=>{
         const inputName = e.target.name; 
@@ -9,6 +9,13 @@ export default function Input({formData, setFormData, name, defVal, placeHolder}
     }
 
     return (
-        <input onChange={handleOnChange} placeholder={placeHolder} name={name} defaultValue ={defVal} required/>
+        <input 
+            type={type} 
+            onChange={handleOnChange}
+            placeholder={placeHolder} 
+            name={name} 
+            defaultValue ={defVal}
+            required
+        />
         )
 }

@@ -22,8 +22,21 @@ export default function CreateForm() {
     
     return (
         <form className="inputForm" onSubmit={createOnSubmit}>
-            <Input formData={formData} setFormData={setFormData} name="task" placeHolder={"start typing..."}/>
-            <Input formData={formData} setFormData={setFormData} name="description" placeHolder={"description"}/>
+            <Input 
+                formData={formData} 
+                setFormData={setFormData} 
+                name="task" 
+                placeHolder={"start typing..."}
+            />
+
+            <Input 
+                formData={formData} 
+                setFormData={setFormData} 
+                name="description" 
+                placeHolder={"description"}
+                type="text"
+            />
+
             <Button text={"add"}/>
         </form>
     )

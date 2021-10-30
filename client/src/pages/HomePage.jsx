@@ -22,7 +22,12 @@ export default function HomePage() {
                 <CreateForm fetch="create"/>
                 <div className="hompage-content">
                     {user.tasks.map((task, key) =>{
-                        return <TaskCard  task={task} key={key} setCloseAll={setCloseAll} closeAll={closeAll}/>
+                        return <TaskCard  
+                                    task={task} 
+                                    key={key} 
+                                    setCloseAll={setCloseAll} 
+                                    closeAll={closeAll}
+                                />
                     })}
                 </div>
             </>)
