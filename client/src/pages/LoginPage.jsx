@@ -4,6 +4,7 @@ import CreateUserForm from '../components/forms/CreateUserForm'
 import LoginForm from '../components/forms/LoginForm'
 
 export default function LoginPage() {
+
     const token = localStorage.getItem("token")
     const history = useHistory()
     const [createUser, setCreateUser] = useState(false)

@@ -1,4 +1,3 @@
-//import FetchHelper from '../utils/FetchHelper'
 const baseUrl = "http://localhost:3000"
 const getToken = () => localStorage.getItem("token")
 

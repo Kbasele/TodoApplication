@@ -1,5 +1,9 @@
 const mongoose = require('mongoose'); 
+const moment = require('moment')
 const Schema = mongoose.Schema; 
+
+const date = moment()
+const dateNow = date.format('MMMM Do YYYY, h:mm:ss a')
 
 const TaskSchema = new Schema ({
     task:{
@@ -15,8 +19,8 @@ const TaskSchema = new Schema ({
         required: true
     },
     date: {
-        type: Date, 
-        default: new Date()
+        type: String, 
+        default: dateNow
     }
 }); 
 
