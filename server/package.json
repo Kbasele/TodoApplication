@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "scripts": {},
+  "scripts": {
+    "npm start": "nodemon"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
