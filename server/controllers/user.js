@@ -6,9 +6,7 @@ const {createToken} = require('../utils/createToken')
 exports.createUser = async (req, res, next) =>{
 
     const {userName, password} = req.body
-        //checks if user exists and if not create new user with hashed password    
         const user = await UserModel.exists({userName: userName})
-        
         if(!user){
             bcrypt.hash(password, salt, (err, hash)=>{
                 if(err) res.sendStatus(500); 
@@ -17,7 +15,7 @@ exports.createUser = async (req, res, next) =>{
 
                     newUser.save()
                     .then(item => res.sendStatus(201).json())
-                    .catch(err=>res.sendStatus(400).json());
+                    .catch(err=>res.sendStatus(400).json(err));
                 }
             })
 

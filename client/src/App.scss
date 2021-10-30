@@ -73,6 +73,17 @@ body{
 
   
 }
+.create-text{
+  margin-top: -20px;
+  position: relative;
+  font-size: 11px;
+  left: 200px; 
+  cursor: pointer;
+
+  &:hover{
+    color:#888888;
+  }
+}
 
 .header{
   background: #EAF2EF;

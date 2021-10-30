@@ -1,15 +1,22 @@
-import React, {useState} from 'react'
-import Button from './Button'
+import React, {useEffect, useState} from 'react'
+import EditButton from './buttons/EditButton'
 import DeleteForm from './forms/DeleteForm'
 import EditForm from './forms/EditForm'
 
 
-export default function TaskCard({task}, {key}) {
+export default function TaskCard({task, setCloseAll,closeAll }) {
     const [visible, setVisible] = useState(false)
     const [edit, setEdit] = useState(false)
+
+    useEffect(()=>{
+        if(closeAll){
+            setEdit(false)
+            setCloseAll(false)
+        }
+    },[edit, setCloseAll, closeAll])
+
     const handleOnClick = () =>{
         setVisible(!visible)
-        
     }  
 
     const showEdit = () =>{
@@ -28,8 +35,8 @@ export default function TaskCard({task}, {key}) {
                         <div onClick={showEdit}>
                     </div>
                     <div className="taskCard-bottom">
-                        <Button text={"edit"} onClick={showEdit} setEdit={setEdit} edit={edit}/>
-                        <DeleteForm task={task}/>
+                        <EditButton onClick={showEdit} setEdit={setEdit}/>
+                        <DeleteForm task={task} setCloseAll={setCloseAll}/>
                     </div>
                 </div>
             }

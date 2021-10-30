@@ -2,17 +2,14 @@ import React, {useState, useContext} from 'react'
 import FetchKit from '../../utils/fetchKit'
 import Input from '../Input'
 import { UserContext } from '../../contexts/userContext'
-import Button from '../Button'
+import SaveButton from '../buttons/SaveButton'
 
 
 
 export default function EditForm({task, setEdit, edit}) {
-
+    
     const {getUserData} = useContext(UserContext)
-
-
     const [formData, setFormData] = useState({
-        
         userName: "", 
         password: ""
     })
@@ -24,7 +21,6 @@ export default function EditForm({task, setEdit, edit}) {
             setEdit(!edit)
             getUserData()
         }
-        console.log(editTask)
     }
     
     return (
@@ -33,7 +29,7 @@ export default function EditForm({task, setEdit, edit}) {
                 <Input formData={formData} setFormData={setFormData} name="task" defVal={task.task}/>
                 <Input formData={formData} setFormData={setFormData} name="description"  defVal={task.description}/>
             </div>
-            <Button text={"save changes"}/>
+            <SaveButton/>
         </form>
 
     )

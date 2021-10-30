@@ -12,6 +12,14 @@ export default class FetchKit{
             }, 
             body: JSON.stringify(formData)
       })
+    static createUserFetch = (formData) => 
+        fetch(`${baseUrl}/user`, {
+            method: 'POST', 
+            headers: {
+              "Content-Type": "application/json",
+            }, 
+            body: JSON.stringify(formData)
+      })
 
     static getUserFetch = () => 
       fetch(`${baseUrl}/user`, {

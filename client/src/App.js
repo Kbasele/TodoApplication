@@ -9,11 +9,7 @@ import ProtectedRoute from './pages/ProtectedRoute'
 
 
 function App() {
-
-  const [user, setUser] = useState({
-      userName:"", 
-      tasks:[]
-  })
+  const [user, setUser] = useState()
 
 
   const getUserData = async () =>{
@@ -21,6 +17,7 @@ function App() {
     const data = await res.json()
     setUser(data) 
   }
+
 
   return (
     <UserContext.Provider value={

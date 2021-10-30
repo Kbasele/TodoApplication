@@ -1,36 +1,34 @@
-import React ,{useEffect, useState}from 'react'
+import React from 'react'
 import { Route } from 'react-router'
-import { useHistory,Redirect } from 'react-router-dom'
-import FetchKit from '../utils/fetchKit'
-import {Puff} from 'react-loading-icons'
+import {Redirect } from 'react-router-dom'
+
+import decode from 'jwt-decode' 
 
 
 export default function ProtectedRoute(component) {
-    const token = localStorage.getItem("token");
-    const [verified, setVerified] = useState();
-    const history = useHistory();
+    const token = localStorage.getItem("token")
 
-    useEffect(()=>{
-        validateToken(token);
-    },[token])
-
-    const validateToken = async (token) => {
-        const data = await FetchKit.verifyTokenAuth(token)
-        if(data.ok){
-            setVerified(true)
-        }
-        else {
-            localStorage.clear();
-            history.push("/")
-        }
+    const validateToken = () => {
+            try{
+                const verified = decode(token)
+                if(verified){
+                    return true
+                }
+            } 
+            catch (e){
+                localStorage.clear()
+                return false   
+            }
     }   
-    
-    
-    if(verified){return (
-        <Route {...component}/>
-        )}
-        else{
-            return  <div class="loading"><Puff stroke="#000000" className="loading" /></div>
-        }
+
+    return (
+        <>
+            {validateToken()?
+            <Route {...component} /> 
+            :
+            <Redirect to={{pathname: "/"}}/> 
+            }          
+        </>
+        )
 
 }
