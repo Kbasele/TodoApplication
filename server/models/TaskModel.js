@@ -3,7 +3,7 @@ const moment = require('moment')
 const Schema = mongoose.Schema; 
 
 const date = moment()
-const dateNow = date.format('MMMM Do YYYY, h:mm:ss a')
+const dateNow = date.format("MMMM Do YYYY, h:mm:ss a")
 
 const TaskSchema = new Schema ({
     task:{
@@ -15,7 +15,7 @@ const TaskSchema = new Schema ({
         required: true
     }, 
     author:{
-        type: Schema.Types.ObjectId, ref:'User',
+        type: Schema.Types.ObjectId, ref:"User",
         required: true
     },
     date: {
@@ -24,4 +24,4 @@ const TaskSchema = new Schema ({
     }
 }); 
 
-module.exports = mongoose.model('Task', TaskSchema);
+module.exports = mongoose.model("Task", TaskSchema);

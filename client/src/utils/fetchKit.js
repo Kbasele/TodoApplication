@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3000"
+const baseUrl = "https://todokev.herokuapp.com"
 const getToken = () => localStorage.getItem("token")
 
 export default class FetchKit{
@@ -20,14 +20,14 @@ export default class FetchKit{
             body: JSON.stringify(formData)
       })
 
-    static getUserFetch = () =>{  
-      return fetch(`${baseUrl}/user`, {
+    static getUserFetch = () =>
+      fetch(`${baseUrl}/user`, {
         method: "GET", 
         headers: {
           "Content-Type": "application/json",
           Authorization: `${getToken()}`,
         }
-      })}
+      })
 
     static verifyTokenAuth = (token) =>
       fetch(`${baseUrl}/auth`, {

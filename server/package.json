@@ -17,5 +17,13 @@
     "moment": "^2.29.1",
     "mongoose": "^6.0.11",
     "nodemon": "^2.0.13"
+  },
+  
+  "bundle-js": {
+    "jsx": "decca.element",
+    "target": { "chrome": 48 },
+    "globals": {
+      "backbone": "Backbone"
+    }
   }
 }
