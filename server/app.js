@@ -16,14 +16,11 @@ const PORT = process.env.PORT || 3000;
 const CONNECTION_URI = process.env.URI;
 const server = process.env.SERVER;
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-  app.get('*', (req, res)=>{
-    req.sendFile(path,resolve(__dirname, 'build', 'index.html'))
-  })
-}
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'build')));
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 //Enabeling post data
 app.use(express.json());

@@ -7,7 +7,6 @@ import HomePage from './pages/HomePage';
 import FetchKit from './utils/fetchKit'
 import ProtectedRoute from './pages/ProtectedRoute'
 
-
 function App() {
   const [user, setUser] = useState()
 

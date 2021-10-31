@@ -1,4 +1,4 @@
-const baseUrl = "https://todokev.herokuapp.com/"
+const baseUrl = "https://todokev.herokuapp.com"
 const getToken = () => localStorage.getItem("token")
 
 export default class FetchKit{
