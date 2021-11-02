@@ -25,7 +25,6 @@ exports.createUser = async (req, res, next) =>{
 }
 
 exports.getUser = async (req, res, next) =>{
-    console.log("get user on backend")
     const userId = req.user
     await UserModel.findById(userId)
     .populate("tasks")
