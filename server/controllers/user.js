@@ -4,7 +4,7 @@ const salt = Number(process.env.SALT);
 const {createToken} = require('../utils/createToken')
 
 exports.createUser = async (req, res, next) =>{
-
+    
     const {userName, password} = req.body
         const user = await UserModel.exists({userName: userName})
         if(!user){
@@ -25,20 +25,18 @@ exports.createUser = async (req, res, next) =>{
 }
 
 exports.getUser = async (req, res, next) =>{
+    console.log("get user on backend")
     const userId = req.user
     await UserModel.findById(userId)
     .populate("tasks")
     .then(item => {
         res.status(200).json({user: item.userName, id:item._id, tasks: item.tasks})})
-    .catch(()=>res.status(400).json("could not found user")); 
-    
+    .catch(()=>res.status(400).json("could not found user"));
 }; 
 
 exports.loginUser = async (req, res, next) =>{
     const {userName, password} = req.body; 
-
     const user = await UserModel.findOne({userName})
-
     if(user){
         bcrypt.compare(password, user.password, (err, match) => {
             if(err) res.status(403).json("WRONG EMAIL OR PASSWORD")
